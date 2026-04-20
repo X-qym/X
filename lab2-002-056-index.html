@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书商城 - 网页布局实验</title>
+    <link rel="stylesheet" href="lab2-02-056-index.css">
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <span>博文图书商城</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">图书分类</a></li>
+                <li><a href="#">新书上市</a></li>
+                <li><a href="#">热门推荐</a></li>
+                <li><a href="#">促销活动</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- 主体内容 -->
+    <div class="container">
+        <div class="main-content">
+            <!-- 左侧栏 -->
+            <aside class="left-sidebar">
+                <h3 class="sidebar-title">图书分类导航</h3>
+                <ul class="category-list">
+                    <li><a href="#">文学小说</a></li>
+                    <li><a href="#">人文社科</a></li>
+                    <li><a href="#">经济管理</a></li>
+                    <li><a href="#">科学技术</a></li>
+                    <li><a href="#">计算机与互联网</a></li>
+                    <li><a href="#">艺术与设计</a></li>
+                    <li><a href="#">生活娱乐</a></li>
+                    <li><a href="#">儿童读物</a></li>
+                    <li><a href="#">教育教材</a></li>
+                    <li><a href="#">外语学习</a></li>
+                </ul>
+            </aside>
+            
+            <!-- 中间栏 -->
+            <main class="middle-content">
+                <!-- 图书展示区 -->
+                <section class="book-display">
+                    <h2 class="section-title">精选图书展示</h2>
+                    <div class="book-grid">
+                        <!-- 第一排第一列有鼠标悬停效果 -->
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Web开发指南">
+                                <div class="book-overlay">
+                                    <h3>Web开发完全指南</h3>
+                                    <p>深入讲解HTML5、CSS3和JavaScript最新技术，适合前端开发者。</p>
+                                    <p class="price">¥89.00</p>
+                                </div>
+                            </div>
+                            <h4 class="book-title">Web开发完全指南</h4>
+                            <p class="book-author">作者：张明</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="JavaScript权威指南">
+                            </div>
+                            <h4 class="book-title">JavaScript权威指南</h4>
+                            <p class="book-author">作者：李华</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="CSS揭秘">
+                            </div>
+                            <h4 class="book-title">CSS揭秘</h4>
+                            <p class="book-author">作者：王芳</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vue.js实战">
+                            </div>
+                            <h4 class="book-title">Vue.js实战</h4>
+                            <p class="book-author">作者：陈伟</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 热门推荐 -->
+                <section class="hot-recommend">
+                    <h2 class="section-title">热门推荐</h2>
+                    <div class="hot-books">
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="React设计模式">
+                            </div>
+                            <h4 class="book-title">React设计模式</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Python编程">
+                            </div>
+                            <h4 class="book-title">Python编程</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="算法导论">
+                            </div>
+                            <h4 class="book-title">算法导论</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="数据库系统">
+                            </div>
+                            <h4 class="book-title">数据库系统</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="网络编程">
+                            </div>
+                            <h4 class="book-title">网络编程</h4>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 新书上市 - Table布局 -->
+                <section class="new-books">
+                    <h2 class="section-title">新书上市</h2>
+                    <table class="book-table">
+                        <thead>
+                            <tr>
+                                <th>书名</th>
+                                <th>作者</th>
+                                <th>出版社</th>
+                                <th>出版日期</th>
+                                <th>价格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML5与CSS3权威指南</td>
+                                <td>张明</td>
+                                <td>电子工业出版社</td>
+                                <td>2026-04-01</td>
+                                <td class="book-price">¥79.00</td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript高级程序设计</td>
+                                <td>李华</td>
+                                <td>人民邮电出版社</td>
+                                <td>2026-03-15</td>
+                                <td class="book-price">¥89.00</td>
+                            </tr>
+                            <tr>
+                                <td>Vue.js 3.0核心解析</td>
+                                <td>王芳</td>
+                                <td>清华大学出版社</td>
+                                <td>2026-03-10</td>
+                                <td class="book-price">¥69.00</td>
+                            </tr>
+                            <tr>
+                                <td>Node.js实战</td>
+                                <td>陈伟</td>
+                                <td>机械工业出版社</td>
+                                <td>2026-02-28</td>
+                                <td class="book-price">¥75.00</td>
+                            </tr>
+                            <tr>
+                                <td>Webpack配置与优化</td>
+                                <td>刘强</td>
+                                <td>中国电力出版社</td>
+                                <td>2026-02-20</td>
+                                <td class="book-price">¥59.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+            
+            <!-- 右侧栏 -->
+            <aside class="right-sidebar">
+                <div class="promo-section">
+                    <h3 class="promo-title">促销信息</h3>
+                    <div class="promo-item">
+                        <h4>春季图书节</h4>
+                        <p>全场图书满200减50，活动时间：4月1日-4月30日</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>新用户专享</h4>
+                        <p>新用户注册即送30元优惠券，首单立减</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>会员日特惠</h4>
+                        <p>每月20日会员日，会员专享图书额外8折优惠</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>编程图书专场</h4>
+                        <p>计算机类图书满3本打7折，包含最新技术书籍</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>免费配送</h4>
+                        <p>订单满99元全国包邮，24小时内发货</p>
+                    </div>
+                </div>
+                
+                <div class="promo-section">
+                    <h3 class="promo-title">公告</h3>
+                    <div class="promo-item">
+                        <h4>网站升级通知</h4>
+                        <p>4月25日凌晨2:00-4:00进行系统维护，期间无法下单</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>积分兑换上线</h4>
+                        <p>购物积分可兑换优惠券、图书及周边商品</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2026 博文图书商城 版权所有</p>
+        <p>地址：北京市海淀区中关村科技园 | 客服电话：400-123-4567</p>
+        <p>本网页为HTML网页实验作业，仅用于学习目的</p>
+    </footer>
+</body>
+</html>
