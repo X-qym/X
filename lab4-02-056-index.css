@@ -1,0 +1,663 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft Yahei", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* 头部样式 */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-menu li a {
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu li a:hover {
+    color: #e67e22;
+}
+
+/* 头部功能图标 */
+.header-icons {
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.icon-btn {
+    font-size: 20px;
+    color: #666;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* 图标旋转动画 - 核心效果 */
+.icon-btn:hover {
+    transform: rotate(360deg);
+    color: #e67e22;
+    background-color: #f8f8f8;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 模态框样式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background-color: white;
+    width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    background: transparent;
+    color: #999;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #e74c3c;
+}
+
+.form-container {
+    padding: 30px;
+    display: none;
+}
+
+.form-container.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+.form-header {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-header h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    border-color: #e67e22;
+    outline: none;
+}
+
+.form-hint {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-password {
+    color: #e67e22;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: #e67e22;
+    color: white;
+}
+
+/* 登录按钮渐变缩放动画 - 核心效果 */
+.login-btn {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+}
+
+.form-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-login {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-social {
+    flex: 1;
+    padding: 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-social:hover {
+    background-color: #e9e9e9;
+}
+
+/* 提示框样式 */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-20px);
+    z-index: 1001;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 轮播图样式 */
+.carousel-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: carouselAnimation 15s infinite;
+}
+
+/* 轮播图动画 - 核心效果（从下向上切换） */
+@keyframes carouselAnimation {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    5% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    30% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    35% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+.carousel-img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.carousel-img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.carousel-img:nth-child(3) {
+    animation-delay: 10s;
+}
+
+/* 主容器样式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 200px 1fr 300px;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* 左侧边栏 */
+.left-sidebar {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e67e22;
+}
+
+.category-list li {
+    margin-bottom: 12px;
+}
+
+.category-list li a {
+    transition: color 0.3s, padding-left 0.3s;
+    display: block;
+}
+
+.category-list li a:hover {
+    color: #e67e22;
+    padding-left: 5px;
+}
+
+/* 中间内容区 */
+.middle-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f5f5f5;
+    color: #333;
+}
+
+.welcome-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.welcome-section h2 {
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+/* 图书展示区 */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.book-item {
+    transition: transform 0.3s;
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+}
+
+.book-cover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.book-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0 15px;
+    transition: height 0.3s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-cover:hover .book-overlay {
+    height: 100%;
+}
+
+.book-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-author {
+    font-size: 14px;
+    color: #999;
+}
+
+.price {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 热门推荐样式 */
+.hot-recommend {
+    margin-bottom: 40px;
+}
+
+.hot-books {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.hot-book-item {
+    text-align: center;
+}
+
+/* 热门图书悬停效果 - 核心效果（右移、阴影加深、放大） */
+.hot-book-cover {
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+.hot-book-cover img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.hot-book-cover:hover {
+    transform: translateX(10px) scale(1.1); /* 右移+放大 */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* 阴影加深 */
+}
+
+/* 新书上市表格样式 */
+.book-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.book-table th,
+.book-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.book-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+}
+
+.book-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.book-price {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.btn-buy {
+    background-color: #3498db;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: #2980b9;
+}
+
+/* 右侧边栏 */
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.promo-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.promo-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #e67e22;
+}
+
+.promo-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+}
+
+.promo-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.promo-item h4 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.promo-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer p {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* 通用动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hot-books {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hot-books {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .modal-container {
+        width: 90%;
+    }
+}

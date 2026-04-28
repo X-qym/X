@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书商城 - 网页布局实验</title>
+    <link rel="stylesheet" href="lab4-02-056-index.css">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <span>数字展销平台首页—春韵</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">图书分类</a></li>
+                <li><a href="#">新书上市</a></li>
+                <li><a href="#">热门推荐</a></li>
+                <li><a href="#">促销活动</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#" id="login-trigger">登录/注册</a></li>
+            </ul>
+            
+            <!-- 功能图标区（购物车、搜索） -->
+            <div class="header-icons">
+                <a href="#" class="icon-btn"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#" class="icon-btn"><i class="fas fa-search"></i></a>
+            </div>
+            
+            <!-- 用户信息显示区域 -->
+            <div class="user-info" id="user-info" style="display: none;">
+                <span id="username-display"></span>
+                <button id="logout-btn">退出</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 登录/注册模态框 -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-container">
+            <!-- 登录表单 -->
+            <div class="form-container active" id="login-form-container">
+                <div class="form-header">
+                    <h2>登录</h2>
+                    <p>还没有账号？<a href="#" class="switch-form" data-target="register">立即注册</a></p>
+                </div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">用户名</label>
+                        <input type="text" id="login-username" name="username" required placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">密码</label>
+                        <input type="password" id="login-password" name="password" required placeholder="请输入密码">
+                    </div>
+                    <div class="form-group form-options">
+                        <label>
+                            <input type="checkbox" name="remember"> 记住我
+                        </label>
+                        <a href="#" class="forgot-password">忘记密码？</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary login-btn">登录</button>
+                </form>
+                <div class="form-footer">
+                    <p>或使用以下方式登录</p>
+                    <div class="social-login">
+                        <button class="btn-social">微信</button>
+                        <button class="btn-social">QQ</button>
+                        <button class="btn-social">微博</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 注册表单 -->
+            <div class="form-container" id="register-form-container">
+                <div class="form-header">
+                    <h2>注册</h2>
+                    <p>已有账号？<a href="#" class="switch-form" data-target="login">立即登录</a></p>
+                </div>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-username">用户名</label>
+                        <input type="text" id="register-username" name="username" required placeholder="请输入用户名">
+                        <div class="form-hint">用户名由3-16位字母、数字或下划线组成</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">邮箱</label>
+                        <input type="email" id="register-email" name="email" required placeholder="请输入邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">密码</label>
+                        <input type="password" id="register-password" name="password" required placeholder="请输入密码">
+                        <div class="form-hint">密码长度至少8位,需包含字母和数字</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">确认密码</label>
+                        <input type="password" id="register-confirm-password" name="confirm-password" required placeholder="请再次输入密码">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="agreement" required> 我已阅读并同意《用户协议》和《隐私政策》
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">注册</button>
+                </form>
+            </div>
+            
+            <!-- 关闭按钮 -->
+            <button class="modal-close" id="modal-close">×</button>
+        </div>
+    </div>
+    
+    <!-- 登录成功提示 -->
+    <div class="toast" id="login-toast">登录成功！</div>
+    
+    <!-- 轮播图区域 -->
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="../img/lunbo1.jpg" alt="轮播图1" class="carousel-img">
+            <img src="../img/lunbo2.jpg" alt="轮播图2" class="carousel-img">
+            <img src="../img/lunbo3.jpg" alt="轮播图3" class="carousel-img">
+        </div>
+    </div>
+    
+    <!-- 主体内容 -->
+    <div class="container">
+        <div class="main-content">
+            <!-- 左侧栏 -->
+            <aside class="left-sidebar">
+                <h3 class="sidebar-title">图书分类导航</h3>
+                <ul class="category-list">
+                    <li><a href="#">文学小说</a></li>
+                    <li><a href="#">人文社科</a></li>
+                    <li><a href="#">经济管理</a></li>
+                    <li><a href="#">科学技术</a></li>
+                    <li><a href="#">计算机与互联网</a></li>
+                    <li><a href="#">艺术与设计</a></li>
+                    <li><a href="#">生活娱乐</a></li>
+                    <li><a href="#">儿童读物</a></li>
+                    <li><a href="#">教育教材</a></li>
+                    <li><a href="#">外语学习</a></li>
+                </ul>
+            </aside>
+            
+            <!-- 中间栏 -->
+            <main class="middle-content">
+                <!-- 欢迎信息，登录后显示用户名 -->
+                <div class="welcome-section" id="welcome-section" style="display: none;">
+                    <h2>欢迎回来，<span id="welcome-username"></span>!</h2>
+                    <p>今日推荐：根据您的阅读历史，我们为您推荐了以下书籍</p>
+                </div>
+                
+                <!-- 图书展示区 -->
+                <section class="book-display">
+                    <h2 class="section-title">精选图书展示</h2>
+                    <div class="book-grid">
+                        <!-- 第一排第一列有鼠标悬停效果 -->
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="../img/webbook.jpg" alt="Web开发指南">
+                                <div class="book-overlay">
+                                    <h3>Web开发完全指南</h3>
+                                    <p>深入讲解HTML5、CSS3和JavaScript最新技术,适合前端开发者。</p>
+                                    <p class="price">¥89.00</p>
+                                </div>
+                            </div>
+                            <h4 class="book-title">Web开发完全指南</h4>
+                            <p class="book-author">作者：张明</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="../img/javabook.jpg" alt="JavaScript权威指南">
+                            </div>
+                            <h4 class="book-title">JavaScript权威指南</h4>
+                            <p class="book-author">作者：李华</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="../img/cssbook.jpg" alt="CSS揭秘">
+                            </div>
+                            <h4 class="book-title">CSS揭秘</h4>
+                            <p class="book-author">作者：王芳</p>
+                        </div>
+                        
+                        <div class="book-item">
+                            <div class="book-cover">
+                                <img src="../img/vuebook.jpg" alt="Vue.js实战">
+                            </div>
+                            <h4 class="book-title">Vue.js实战</h4>
+                            <p class="book-author">作者：陈伟</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 热门推荐 -->
+                <section class="hot-recommend">
+                    <h2 class="section-title">热门推荐</h2>
+                    <div class="hot-books">
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="../img/reactbook.jpg" alt="React设计模式">
+                            </div>
+                            <h4 class="book-title">React设计模式</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="../img/pythonbook.jpg" alt="Python编程">
+                            </div>
+                            <h4 class="book-title">Python编程</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="../img/suanfabook.jpg" alt="算法导论">
+                            </div>
+                            <h4 class="book-title">算法导论</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="../img/shujubook.jpg" alt="数据库系统">
+                            </div>
+                            <h4 class="book-title">数据库系统</h4>
+                        </div>
+                        
+                        <div class="hot-book-item">
+                            <div class="hot-book-cover">
+                                <img src="../img/wangluobook.jpg" alt="网络编程">
+                            </div>
+                            <h4 class="book-title">网络编程</h4>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 新书上市 - Table布局 -->
+                <section class="new-books">
+                    <h2 class="section-title">新书上市</h2>
+                    <table class="book-table">
+                        <thead>
+                            <tr>
+                                <th>书名</th>
+                                <th>作者</th>
+                                <th>出版社</th>
+                                <th>出版日期</th>
+                                <th>价格</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML5与CSS3权威指南</td>
+                                <td>张明</td>
+                                <td>电子工业出版社</td>
+                                <td>2026-04-01</td>
+                                <td class="book-price">¥79.00</td>
+                                <td><button class="btn-buy" data-login-required>加入购物车</button></td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript高级程序设计</td>
+                                <td>李华</td>
+                                <td>人民邮电出版社</td>
+                                <td>2026-03-15</td>
+                                <td class="book-price">¥89.00</td>
+                                <td><button class="btn-buy" data-login-required>加入购物车</button></td>
+                            </tr>
+                            <tr>
+                                <td>Vue.js 3.0核心解析</td>
+                                <td>王芳</td>
+                                <td>清华大学出版社</td>
+                                <td>2026-03-10</td>
+                                <td class="book-price">¥69.00</td>
+                                <td><button class="btn-buy" data-login-required>加入购物车</button></td>
+                            </tr>
+                            <tr>
+                                <td>Node.js实战</td>
+                                <td>陈伟</td>
+                                <td>机械工业出版社</td>
+                                <td>2026-02-28</td>
+                                <td class="book-price">¥75.00</td>
+                                <td><button class="btn-buy" data-login-required>加入购物车</button></td>
+                            </tr>
+                            <tr>
+                                <td>Webpack配置与优化</td>
+                                <td>刘强</td>
+                                <td>中国电力出版社</td>
+                                <td>2026-02-20</td>
+                                <td class="book-price">¥59.00</td>
+                                <td><button class="btn-buy" data-login-required>加入购物车</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+            
+            <!-- 右侧栏 -->
+            <aside class="right-sidebar">
+                <div class="promo-section">
+                    <h3 class="promo-title">促销信息</h3>
+                    <div class="promo-item">
+                        <h4>春季图书节</h4>
+                        <p>全场图书满200减50,活动时间:4月1日-4月30日</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>新用户专享</h4>
+                        <p>新用户注册即送30元优惠券,首单立减</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>会员日特惠</h4>
+                        <p>每月20日会员日,会员专享图书额外8折优惠</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>编程图书专场</h4>
+                        <p>计算机类图书满3本打7折,包含最新技术书籍</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>免费配送</h4>
+                        <p>订单满99元全国包邮,24小时内发货</p>
+                    </div>
+                </div>
+                
+                <div class="promo-section">
+                    <h3 class="promo-title">公告</h3>
+                    <div class="promo-item">
+                        <h4>网站升级通知</h4>
+                        <p>4月25日凌晨2:00-4:00进行系统维护,期间无法下单</p>
+                    </div>
+                    <div class="promo-item">
+                        <h4>积分兑换上线</h4>
+                        <p>购物积分可兑换优惠券、图书及周边商品</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2026 博文图书商城 版权所有</p>
+        <p>地址：北京市海淀区中关村科技园 | 客服电话;400-123-4567</p>
+        <p>本网页为HTML网页实验作业,仅用于学习目的</p>
+    </footer>
+
+    <!-- JavaScript 代码 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const loginTrigger = document.getElementById('login-trigger');
+            const loginModal = document.getElementById('login-modal');
+            const modalClose = document.getElementById('modal-close');
+            const userInfo = document.getElementById('user-info');
+            const usernameDisplay = document.getElementById('username-display');
+            const welcomeSection = document.getElementById('welcome-section');
+            const welcomeUsername = document.getElementById('welcome-username');
+            const logoutBtn = document.getElementById('logout-btn');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const loginToast = document.getElementById('login-toast');
+            const switchFormLinks = document.querySelectorAll('.switch-form');
+            const loginFormContainer = document.getElementById('login-form-container');
+            const registerFormContainer = document.getElementById('register-form-container');
+            const loginRequiredBtns = document.querySelectorAll('[data-login-required]');
+            
+            // 检查是否已登录
+            function checkLoginStatus() {
+                const currentUser = localStorage.getItem('currentUser');
+                if (currentUser) {
+                    const user = JSON.parse(currentUser);
+                    // 更新用户界面
+                    usernameDisplay.textContent = user.username;
+                    userInfo.style.display = 'block';
+                    welcomeSection.style.display = 'block';
+                    welcomeUsername.textContent = user.username;
+                    loginTrigger.style.display = 'none';
+                } else {
+                    // 未登录状态
+                    userInfo.style.display = 'none';
+                    welcomeSection.style.display = 'none';
+                    loginTrigger.style.display = 'block';
+                }
+            }
+            
+            // 显示登录模态框
+            loginTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.style.display = 'flex';
+                // 默认显示登录表单
+                showForm('login');
+            });
+            
+            // 关闭登录模态框
+            modalClose.addEventListener('click', function() {
+                loginModal.style.display = 'none';
+            });
+            
+            // 点击模态框外部关闭
+            loginModal.addEventListener('click', function(e) {
+                if (e.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+            });
+            
+            // 切换登录/注册表单
+            switchFormLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('data-target');
+                    showForm(target);
+                });
+            });
+            
+            // 显示指定表单
+            function showForm(formType) {
+                if (formType === 'login') {
+                    loginFormContainer.classList.add('active');
+                    registerFormContainer.classList.remove('active');
+                } else {
+                    registerFormContainer.classList.add('active');
+                    loginFormContainer.classList.remove('active');
+                }
+            }
+            
+            // 登录表单提交
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+                
+                // 获取本地存储的用户数据
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                
+                // 验证用户信息
+                const user = users.find(u => u.username === username && u.password === password);
+                
+                if (user) {
+                    // 登录成功
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    
+                    // 显示成功提示
+                    loginToast.textContent = '登录成功！';
+                    loginToast.classList.add('show');
+                    
+                    // 关闭模态框
+                    setTimeout(() => {
+                        loginModal.style.display = 'none';
+                        loginToast.classList.remove('show');
+                        
+                        // 更新UI
+                        checkLoginStatus();
+                        
+                        // 重置表单
+                        loginForm.reset();
+                    }, 1500);
+                } else {
+                    // 登录失败
+                    alert('用户名或密码错误！');
+                }
+            });
+            
+            // 注册表单提交
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('register-username').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirm-password').value;
+                
+                // 验证用户名格式
+                const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
+                if (!usernameRegex.test(username)) {
+                    alert('用户名格式不正确!请输入3-16位字母、数字或下划线');
+                    return;
+                }
+                
+                // 验证密码格式
+                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                if (!passwordRegex.test(password)) {
+                    alert('密码格式不正确!密码长度至少8位,需包含字母和数字');
+                    return;
+                }
+                
+                // 验证密码一致性
+                if (password !== confirmPassword) {
+                    alert('两次输入的密码不一致！');
+                    return;
+                }
+                
+                // 获取现有用户数据
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                
+                // 检查用户名是否已存在
+                if (users.some(user => user.username === username)) {
+                    alert('该用户名已存在，请使用其他用户名！');
+                    return;
+                }
+                
+                // 检查邮箱是否已存在
+                if (users.some(user => user.email === email)) {
+                    alert('该邮箱已注册，请使用其他邮箱！');
+                    return;
+                }
+                
+                // 创建新用户
+                const newUser = {
+                    username: username,
+                    email: email,
+                    password: password,
+                    registerDate: new Date().toLocaleDateString()
+                };
+                
+                // 保存到本地存储
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // 自动登录
+                localStorage.setItem('currentUser', JSON.stringify(newUser));
+                
+                // 显示成功提示
+                loginToast.textContent = '注册成功！已自动登录';
+                loginToast.classList.add('show');
+                
+                // 关闭模态框
+                setTimeout(() => {
+                    loginModal.style.display = 'none';
+                    loginToast.classList.remove('show');
+                    
+                    // 更新UI
+                    checkLoginStatus();
+                    
+                    // 重置表单
+                    registerForm.reset();
+                    
+                    // 切换到登录表单
+                    showForm('login');
+                }, 1500);
+            });
+            
+            // 退出登录
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('currentUser');
+                checkLoginStatus();
+                
+                // 显示退出成功提示
+                loginToast.textContent = '已成功退出登录';
+                loginToast.classList.add('show');
+                setTimeout(() => {
+                    loginToast.classList.remove('show');
+                }, 1500);
+            });
+            
+            // 处理需要登录的操作
+            loginRequiredBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!localStorage.getItem('currentUser')) {
+                        // 显示登录模态框
+                        loginModal.style.display = 'flex';
+                        showForm('login');
+                        alert('请先登录后再操作！');
+                    } else {
+                        // 执行操作
+                        alert('已添加到购物车！');
+                    }
+                });
+            });
+            
+            // 页面加载时检查登录状态
+            checkLoginStatus();
+            
+            // 模拟一些已注册的用户（仅用于演示）
+            if (!localStorage.getItem('users')) {
+                const initialUsers = [
+                    { username: 'demo', email: 'demo@example.com', password: 'demo123', registerDate: '2026-04-01' },
+                    { username: 'test', email: 'test@example.com', password: 'test123', registerDate: '2026-03-15' }
+                ];
+                localStorage.setItem('users', JSON.stringify(initialUsers));
+            }
+        });
+    </script>
+</body>
+</html>
